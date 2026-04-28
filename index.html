@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MACROINT — Macro & Geopolitical Intelligence Terminal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>MACROINT</h1>
+        <p class="subtitle">Macro & Geopolitical Intelligence Terminal</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="copyBriefBtn" class="ghost-btn">Copier brief</button>
+        <button id="printBriefBtn" class="ghost-btn">Exporter PDF</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="left-pane panel">
+        <div class="panel-header">
+          <h2>Carte interactive</h2>
+          <span class="badge">Mocked data</span>
+        </div>
+
+        <svg id="worldMap" viewBox="0 0 1200 620" role="img" aria-label="Carte simplifiée des pays suivis">
+          <rect x="0" y="0" width="1200" height="620" class="map-bg" />
+
+          <rect id="map-US" class="country-node" x="120" y="220" width="160" height="90" rx="12" />
+          <text x="200" y="275">United States</text>
+
+          <rect id="map-CN" class="country-node" x="820" y="220" width="140" height="90" rx="12" />
+          <text x="890" y="275">China</text>
+
+          <rect id="map-VN" class="country-node" x="920" y="340" width="80" height="70" rx="12" />
+          <text x="960" y="385">Vietnam</text>
+
+          <rect id="map-IN" class="country-node" x="780" y="330" width="120" height="80" rx="12" />
+          <text x="840" y="378">India</text>
+
+          <rect id="map-KR" class="country-node" x="965" y="180" width="85" height="60" rx="12" />
+          <text x="1007" y="218">S. Korea</text>
+
+          <rect id="map-JP" class="country-node" x="1060" y="210" width="90" height="110" rx="12" />
+          <text x="1105" y="270">Japan</text>
+
+          <rect id="map-DE" class="country-node" x="530" y="170" width="100" height="80" rx="12" />
+          <text x="580" y="215">Germany</text>
+
+          <rect id="map-FR" class="country-node" x="470" y="250" width="100" height="80" rx="12" />
+          <text x="520" y="295">France</text>
+        </svg>
+
+        <div class="quick-access">
+          <h3>Quick Access</h3>
+          <div id="countryButtons" class="btn-grid"></div>
+        </div>
+      </section>
+
+      <section class="right-pane panel">
+        <div id="welcome" class="welcome">
+          <h2>Bienvenue dans MACROINT</h2>
+          <p>
+            Sélectionne un pays pour afficher un brief macro/géo détaillé, les signaux de marché,
+            le score de risque, le radar de risque et une thèse d’investissement.
+          </p>
+        </div>
+
+        <div id="analysis" class="hidden">
+          <div class="analysis-head">
+            <h2 id="countryTitle">Country</h2>
+            <div class="compare-box">
+              <label for="compareSelect">Comparer avec</label>
+              <select id="compareSelect"></select>
+            </div>
+          </div>
+
+          <section class="card">
+            <h3>Résumé macro</h3>
+            <p id="macroSummary"></p>
+            <ul class="kpi-list" id="kpiList"></ul>
+          </section>
+
+          <section class="card">
+            <h3>Risk Score</h3>
+            <div class="risk-wrapper">
+              <div class="risk-bar-track">
+                <div id="riskBar" class="risk-bar-fill"></div>
+              </div>
+              <strong id="riskValue">0 / 100</strong>
+            </div>
+          </section>
+
+          <section class="card two-col">
+            <div>
+              <h3>Market Signals</h3>
+              <div id="signals" class="signals-grid"></div>
+            </div>
+            <div>
+              <h3>Risk Radar</h3>
+              <canvas id="riskRadar" width="280" height="220"></canvas>
+            </div>
+          </section>
+
+          <section class="card two-col">
+            <div>
+              <h3>Tendance macro (8 trimestres)</h3>
+              <canvas id="macroTrend" width="360" height="180"></canvas>
+            </div>
+            <div>
+              <h3>Investment Thesis</h3>
+              <p id="thesis"></p>
+            </div>
+          </section>
+
+          <section class="card">
+            <h3>Risques géopolitiques</h3>
+            <ul id="geoRisks"></ul>
+            <h3>Opportunités d’investissement</h3>
+            <ul id="opportunities"></ul>
+          </section>
+
+          <section class="card">
+            <h3>Impact potentiel cross-asset</h3>
+            <ul id="assetImpact"></ul>
+          </section>
+
+          <section id="comparisonCard" class="card hidden">
+            <h3>Comparaison pays</h3>
+            <div id="comparisonGrid" class="comparison-grid"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <aside id="eduDrawer" class="edu-drawer">
+    <button id="closeDrawer" class="close-drawer">×</button>
+    <h3 id="eduTermTitle">Terme</h3>
+    <p id="eduTermBody"></p>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
