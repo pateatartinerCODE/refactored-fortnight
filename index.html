@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MACROINT — Global Intelligence Terminal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="app-shell">
+    <header class="topbar glass">
+      <div>
+        <p class="eyebrow">GLOBAL INTELLIGENCE TERMINAL</p>
+        <h1>MACROINT</h1>
+        <p class="subtitle">Macro & Geopolitical Intelligence — Immersive 3D Edition</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="copyBriefBtn" class="ghost-btn">Copier brief</button>
+        <button id="printBriefBtn" class="ghost-btn">Exporter PDF</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="left-pane panel glass">
+        <div class="panel-header">
+          <h2>Global Theatre</h2>
+          <span class="badge">Live Mock Terminal</span>
+        </div>
+        <div id="globeContainer" class="globe-wrap">
+          <div class="orbital-glow"></div>
+          <div id="globeViz"></div>
+        </div>
+        <p class="hint">Clique un marker pour ouvrir le brief pays. Rotation auto + zoom activés.</p>
+
+        <div class="quick-access">
+          <h3>Quick Access</h3>
+          <div id="countryButtons" class="btn-grid"></div>
+        </div>
+      </section>
+
+      <section class="right-pane panel glass">
+        <div id="welcome" class="welcome">
+          <h2>Bienvenue dans MACROINT</h2>
+          <p>Sélectionne un pays depuis le globe 3D pour charger une note d'analyste complète.</p>
+        </div>
+
+        <div id="analysis" class="hidden">
+          <div id="loadingMask" class="loading-mask hidden">
+            <div class="loader-ring"></div>
+            <p>Synchronisation du brief macro...</p>
+          </div>
+
+          <div class="analysis-head">
+            <div>
+              <p class="eyebrow">Country Intelligence Brief</p>
+              <h2 id="countryTitle">Country</h2>
+            </div>
+            <div class="compare-box">
+              <label for="compareSelect">Comparer avec</label>
+              <select id="compareSelect"></select>
+            </div>
+          </div>
+
+          <section class="card">
+            <h3>Résumé macro</h3>
+            <p id="macroSummary"></p>
+            <div id="kpiCards" class="kpi-cards"></div>
+          </section>
+
+          <section class="card">
+            <h3>Risk Score</h3>
+            <div class="risk-wrapper">
+              <div class="risk-bar-track"><div id="riskBar" class="risk-bar-fill"></div></div>
+              <strong id="riskValue">0 / 100</strong>
+            </div>
+          </section>
+
+          <section class="card two-col">
+            <div>
+              <h3>Market Signals</h3>
+              <div id="signals" class="signals-grid"></div>
+            </div>
+            <div>
+              <h3>Risk Radar</h3>
+              <canvas id="riskRadar" width="300" height="230"></canvas>
+            </div>
+          </section>
+
+          <section class="card two-col">
+            <div>
+              <h3>Tendance macro (8 trimestres)</h3>
+              <canvas id="macroTrend" width="380" height="190"></canvas>
+            </div>
+            <article class="thesis-card">
+              <h3>Investment Thesis</h3>
+              <p id="thesis"></p>
+            </article>
+          </section>
+
+          <section class="card">
+            <h3>Risques géopolitiques</h3>
+            <ul id="geoRisks"></ul>
+            <h3>Opportunités d’investissement</h3>
+            <ul id="opportunities"></ul>
+          </section>
+
+          <section class="card">
+            <h3>Impact potentiel cross-asset</h3>
+            <ul id="assetImpact"></ul>
+          </section>
+
+          <section id="comparisonCard" class="card hidden">
+            <h3>Comparaison pays</h3>
+            <div id="comparisonGrid" class="comparison-grid"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <aside id="eduDrawer" class="edu-drawer glass">
+    <button id="closeDrawer" class="close-drawer">×</button>
+    <p class="eyebrow">Macro Lexicon</p>
+    <h3 id="eduTermTitle">Terme</h3>
+    <p id="eduTermBody"></p>
+  </aside>
+
+  <script src="https://unpkg.com/three"></script>
+  <script src="https://unpkg.com/globe.gl"></script>
+  <script src="app.js"></script>
+</body>
+</html>
